@@ -9,7 +9,7 @@ board = [
     ,[".",".",".","4","1","9",".",".","5"]
     ,[".",".",".",".","8",".",".","7","9"]
 ]
-
+#ire a dormir
 class ValidarSudoku:
     def __init__(self,tablero)->None:
         self.tablero=tablero
