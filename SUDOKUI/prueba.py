@@ -23,3 +23,4 @@ class ValidarSudoku:
 #instanciar el objeto
 sudoku = ValidarSudoku(board)
 sudoku.Chequeo()
+#mañana trabajemos xd
