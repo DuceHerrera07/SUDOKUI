@@ -1,8 +1,6 @@
 #Importar libreria
 import pygame#libreria para hacer juegos en dos dimensiones
 import random
-
-#import numpy
 #Inicio de pygame
 pygame.init()
 
@@ -20,7 +18,7 @@ fuente_texto=pygame.font.SysFont(None,70)
 #actualizar pantalla
 reloj=pygame.time.Clock()
 
-#intento de condiciones y funciones
+#condiciones y funciones
 def dibujo_tablero(): 
     color_bordes=pygame.Color("black")
     pygame.draw.rect(pantalla,color_bordes,pygame.Rect(15,15,785,785),10)#marco del tablero bordes externos
@@ -38,23 +36,21 @@ def numero_sobre_tablero():
     while fila < 9:
         columna=0
         while columna < 9:
-            #se puede usar cualquiera de las dos 
-            #Numero1=numpy.random.randint(low=1,high=9,size=1).tolist()#prueba para generar numeros random
             Numero1=[random.randint(1,9) for x in range(1)]#genera numero random/aleatorios
             sin_corchetes_Numero1=str(Numero1)[1:-1]#variable para que no muestre los corchetes en cada numero
             #crear condicional para que la variable Numero1 no se repita entre columnas y filas
             
             
             #formato del texto de los numeros
-            texto=fuente_texto.render(str(sin_corchetes_Numero1),True,pygame.Color("black"))#formato del texto
-            pantalla.blit(texto,pygame.Vector2((columna*88) + Compensar,(fila * 88) + Compensar))#para mostrar los numero sobre el tablero
+            texto_numeros=fuente_texto.render(str(sin_corchetes_Numero1),True,pygame.Color("black"))#formato del texto
+            pantalla.blit(texto_numeros,pygame.Vector2((columna*88) + Compensar,(fila * 88) + Compensar))#para mostrar los numero sobre el tablero
             columna += 1 
         fila += 1
-        
-#funciones
+                
+#llamando a las funciones
 dibujo_tablero()
-numero_sobre_tablero()   
-#funcion de ejecucion     
+numero_sobre_tablero()  
+      
 #Bandera      
 bandera=True
 #funciones de mouse y teclado sobre el tablero
@@ -63,6 +59,11 @@ while bandera:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             bandera=False
+        #acceder al mouse en este caso obtener sus cordenadas donde haga click el jugador    
+        if event.type==pygame.MOUSEBUTTONDOWN:
+            #si el usuario presiona el mouse se obtiene posicion
+            posicion=pygame.mouse.get_pos()
+            print("X,Y",posicion,"Coordenadas de la reticula")    
         #acceso al teclado para teclas en especifico del 1 al 9
         if event.type==pygame.KEYDOWN:
             if event.key==pygame.K_1:
@@ -92,12 +93,11 @@ while bandera:
             if event.key==pygame.K_9:
                 key=9
                 print("Soy la tecla 9")
-        #acceder al mouse en este caso obtener sus cordenadas donde haga click el jugador    
-        if event.type==pygame.MOUSEBUTTONDOWN:
-            #si el usuario presiona el mouse se obtiene posicion
-            posicion=pygame.mouse.get_pos()
-            print("X,Y",posicion,"Coordenadas de la reticula") 
-                               
+            #para eliminar, aun no funciona del todo.
+            if event.key==pygame.K_DELETE:
+                posicion.clear()
+                key=None
+                                         
     #rapidez de actualizacion de pantalla
     reloj.tick(60)
     pygame.display.update()#activa todo lo que este sobre pantalla sin ello no se ejecuta
