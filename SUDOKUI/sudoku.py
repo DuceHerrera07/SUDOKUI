@@ -1,3 +1,4 @@
+#linea 1 hasta la 106 hecho por Dulce Herrera
 #Importar libreria
 import pygame#libreria para hacer juegos en dos dimensiones
 import random
