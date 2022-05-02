@@ -1,60 +1,23 @@
 #Importar libreria
 import pygame#libreria para hacer juegos en dos dimensiones
-import tkinter as tk #blioteca grafica (GUI)
-from tkinter import*#para gregar la funcion de texto
+import random
 #Inicio de pygame
 pygame.init()
-
-numeros_del_tablero=[
-        [5,3,0,0,7,0,0,0,0],#1
-        [6,0,3,1,9,5,0,0,0],#2
-        [0,9,8,0,0,0,0,6,0],#3
-        [8,0,0,0,6,0,0,0,0],#4
-        [4,0,0,8,0,3,0,0,1],#5
-        [7,0,0,0,2,0,0,0,6],#6
-        [0,6,0,0,0,0,2,8,0],#7
-        [0,0,0,4,1,9,0,0,5],#8
-        [0,0,0,0,8,0,0,7,9]#9
-    ]
 
 #ventana donde estaran los tableros aliado y enemigo
 pantalla = pygame.display.set_mode((900,810))#ancho y altura
 #fondo de ventana
 pantalla.fill("white")
-
 #icono de ventana pygame
 icono=pygame.image.load ("sudoku_Icono.jpg")
 pygame.display.set_icon(icono)
 #titulo de la ventana
 pygame.display.set_caption("Sudoku")
-
 #tipo de fuente para texto
 fuente_texto=pygame.font.SysFont(None,70)
 #actualizar pantalla
 reloj=pygame.time.Clock()
-def ventana2():
-        ven = tk.Tk()
-        #ancho y largo (orden de geometry)
-        ven.geometry('1500x910')#dimension de ventana
-        ven.title('Reglas de sodoku clásico')#titulo
-        ven.iconbitmap(r"instruccion.ico")#icono
-        ven.configure(bg="black")#color de fondo
-        inst=Label(ven,text="Instrucción",bg="white")
-        inf=Label(ven,text="Al hacer clic en un boton del tablero",bg="white")
-        inf1=Label(ven,text="podra decidir las cordenas de sus",bg="white")
-        inf2=Label(ven,text="barcos, cuando estos esten asignados",bg="white")
-        inf3=Label(ven,text="correctamente se mostraran de color marron.",bg="white")
-        m=Label(ven,text="Cierre esta ventana para continuar",bg="white")
-        #para que se muestren en pantalla las variables anteriores que son str, columna y fila en la que apareceran
-        inst.grid(column=11,row=2)
-        inf.grid(column=11,row=3)
-        inf1.grid(column=11,row=4)
-        inf2.grid(column=11,row=5)
-        inf3.grid(column=11,row=6)
-        m.grid(column=11,row=7)
-        salir=tk.Button(ven,text="Entendido")
-        ven.mainloop()
-    
+
 #condiciones y funciones
 def dibujo_tablero(): 
     color_bordes=pygame.Color("black")
@@ -68,22 +31,27 @@ def dibujo_tablero():
         a+=1
 
 #Dibujar numeros sobre el tablero
-def numeros_sobre_tablero_funcion():
+def numero_sobre_tablero():
     fila=0
     Compensar=40#nos ayudara para alinear numeros dentro del tablero
     while fila < 9:
         columna=0
         while columna < 9:
-            salida=numeros_del_tablero[fila][columna]
+            Numero1=[random.randint(1,9) for x in range(1)]#genera numero random/aleatorios    
+            sin_corchetes_Numero1=str(Numero1)[1:-1]#variable para que no muestre los corchetes en cada numero
+            #crear condicional para que la variable Numero1 no se repita entre columnas y filas
+            
+            
             #formato del texto de los numeros
-            texto_numeros=fuente_texto.render(str(salida),True,pygame.Color("black"))#formato del texto
+            texto_numeros=fuente_texto.render(str(sin_corchetes_Numero1),True,pygame.Color("black"))#formato del texto
             pantalla.blit(texto_numeros,pygame.Vector2((columna*88) + Compensar,(fila * 88) + Compensar))#para mostrar los numero sobre el tablero
             columna += 1 
         fila += 1
-#funciones  
-ventana2()        
+                
+#llamando a las funciones
 dibujo_tablero()
-numeros_sobre_tablero_funcion()   
+numero_sobre_tablero()  
+      
 #Bandera      
 bandera=True
 #funciones de mouse y teclado sobre el tablero
@@ -130,14 +98,10 @@ while bandera:
             if event.key==pygame.K_DELETE:
                 posicion.clear()
                 key=None
-    
-    
-
                                          
-        #rapidez de actualizacion de pantalla
-        reloj.tick(60)
-        pygame.display.update()#activa todo lo que este sobre pantalla sin ello no se ejecuta
-        pygame.display.flip()#actualiza la superficie de visualizacion completa
-
+    #rapidez de actualizacion de pantalla
+    reloj.tick(60)
+    pygame.display.update()#activa todo lo que este sobre pantalla sin ello no se ejecuta
+    pygame.display.flip()#actualiza la superficie de visualizacion completa
 #IDLE_cerrar ventana    
 pygame.quit()
