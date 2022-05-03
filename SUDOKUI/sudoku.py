@@ -75,8 +75,8 @@ def ventana2():
         texto9.place(x=500,y=280)
         texto10.place(x=500,y=320)
         #crear boton que cierre la ventana de tkinter
-        salir=tk.Button(ven,text="¡Entendido!",command=quit,height=3,width=15,font=fuente,bg="white")
-        salir.place(x=750,y=400)
+        salir=tk.Button(text="¡Entendido!",command=ven.destroy,height=3,width=15,font=fuente,bg="white").place(x=750,y=400)
+        
         ven.mainloop()
 #condiciones y funciones para la ventana del juego
 def dibujo_tablero(): 
@@ -149,14 +149,7 @@ while bandera:
             if event.key==pygame.K_9:
                 key=9
                 print("Soy la tecla 9")
-            #para eliminar, aun no funciona del todo.
-            if event.key==pygame.K_DELETE:
-                posicion.clear()
-                key=None
-    
-    
-
-                                         
+                                                
         #rapidez de actualizacion de pantalla
         reloj.tick(60)
         pygame.display.update()#activa todo lo que este sobre pantalla sin ello no se ejecuta
