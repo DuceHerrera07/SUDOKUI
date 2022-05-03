@@ -1,5 +1,6 @@
 #Importar libreria
 import tkinter
+from numpy import size
 import pygame#libreria para hacer juegos en dos dimensiones
 import tkinter as tk #blioteca grafica (GUI)
 import tkinter.font as tkFont#libreria del texto y abrevacion del llamdo de la funcion
@@ -38,7 +39,7 @@ reloj=pygame.time.Clock()
 def ventana2():
         ven = tk.Tk()
         #ancho y largo (orden de geometry)
-        ven.geometry('1300x820')#dimension de ventana
+        ven.geometry('1300x720')#dimension de ventana
         ven.title('Reglas de sodoku clásico')#titulo
         ven.iconbitmap(r"instruccion.ico")#icono
         ven.configure(bg="white")#color de fondo
@@ -46,11 +47,14 @@ def ventana2():
         imagen=tkinter.PhotoImage(file="tkinter_imagen_N.gif")#variable que guarda la imagen
         sobre_ventana=tkinter.Label(ven,image=imagen).place(x=0,y=0)#activa la imagen y posiciona en cordenadas especificas
         ven.configure(bg="white")#color de fondo
+        #funcion para agregar estilo de fuente y tamaño
         estilo_fuente=tkFont.Font(family="Cascadia Mono SemiLight",size=20)
-        texto=Label(ven,text="Un rompecabezas en Sudoku comienza con una",font=estilo_fuente,bg="white")#60 caracteres para que ajuste bien sobre pantalla
+        fuente=tkFont.Font(family="Berlin Sans FB Demi",size=15)#para el botón
+        #inicia el los textos que se mostraran sobre la ventana de tkinter
+        texto=Label(ven,text="Un rompecabezas en Sudoku comienza con una",font=estilo_fuente,bg="white")
         texto1=Label(ven,text="cuadricula en el cual algunos de los números ya,",font=estilo_fuente,bg="white")
         texto2=Label(ven,text="están en su lugar en dependencia de la dificultad del juego. Se completa",font=estilo_fuente,bg="white")
-        texto3=Label(ven,text="un rompecabezas cuando cada número del 1 al 9 ",font=estilo_fuente,bg="white")
+        texto3=Label(ven,text="de un rompecabezas cuando cada número del 1 al 9 ",font=estilo_fuente,bg="white")
         texto4=Label(ven,text="aparecen solamente una vez en cada una de las 9",font=estilo_fuente,bg="white")
         texto5=Label(ven,text="filas,",font=estilo_fuente,bg="white",foreground="yellow")
         texto6=Label(ven,text="columnas",font=estilo_fuente,bg="white",foreground="red")
@@ -58,7 +62,7 @@ def ventana2():
         texto8=Label(ven,text="celdas.",font=estilo_fuente,bg="white",foreground="green")
         texto9=Label(ven,text="Analice la cuadrícula para encontar los números",font=estilo_fuente,bg="white")
         texto10=Label(ven,text="que pudiera encajar en cada celda del tablero.",font=estilo_fuente,bg="white")
-        #para que se muestren en pantalla las variables anteriores que son str, columna y fila en la que apareceran
+        #para que se muestren en pantalla las variables anteriores que son str, x & y en la que apareceran
         texto.place(x=500,y=5)#x= lo corre hacia la derecha e izquierda
         texto1.place(x=500,y=40)#y= lo corre hacia abajo y arriba
         texto2.place(x=500,y=80)#+40 en y=
@@ -70,9 +74,10 @@ def ventana2():
         texto8.place(x=770,y=200)#green
         texto9.place(x=500,y=280)
         texto10.place(x=500,y=320)
-        #salir=tk.Button(ven,text="Entendido")
+        #crear boton que cierre la ventana de tkinter
+        salir=tk.Button(ven,text="¡Entendido!",command=quit,height=3,width=15,font=fuente,bg="white")
+        salir.place(x=750,y=400)
         ven.mainloop()
-   
 #condiciones y funciones para la ventana del juego
 def dibujo_tablero(): 
     color_bordes=pygame.Color("black")
