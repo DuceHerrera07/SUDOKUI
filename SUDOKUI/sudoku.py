@@ -73,7 +73,7 @@ def ventana2():
         #salir=tk.Button(ven,text="Entendido")
         ven.mainloop()
    
-#condiciones y funciones
+#condiciones y funciones para la ventana del juego
 def dibujo_tablero(): 
     color_bordes=pygame.Color("black")
     pygame.draw.rect(pantalla,color_bordes,pygame.Rect(15,15,785,785),10)#marco del tablero bordes externos
