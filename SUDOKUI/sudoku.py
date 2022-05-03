@@ -1,10 +1,8 @@
 #Importar libreria
 import tkinter
-from numpy import size
 import pygame#libreria para hacer juegos en dos dimensiones
 import tkinter as tk #blioteca grafica (GUI)
 import tkinter.font as tkFont#libreria del texto y abrevacion del llamdo de la funcion
-
 from tkinter import*#para gregar la funcion de texto
 #Inicio de pygame
 pygame.init()
@@ -25,7 +23,6 @@ numeros_del_tablero=[
 pantalla = pygame.display.set_mode((900,810))#ancho y altura
 #fondo de ventana
 pantalla.fill("white")
-
 #icono de ventana pygame
 icono=pygame.image.load ("sudoku_Icono.jpg")
 pygame.display.set_icon(icono)
@@ -76,8 +73,8 @@ def ventana2():
         texto10.place(x=500,y=320)
         #crear boton que cierre la ventana de tkinter
         salir=tk.Button(text="¡Entendido!",command=ven.destroy,height=3,width=15,font=fuente,bg="white").place(x=750,y=400)
-        
         ven.mainloop()
+        
 #condiciones y funciones para la ventana del juego
 def dibujo_tablero(): 
     color_bordes=pygame.Color("black")
@@ -103,10 +100,12 @@ def numeros_sobre_tablero_funcion():
             pantalla.blit(texto_numeros,pygame.Vector2((columna*88) + Compensar,(fila * 88) + Compensar))#para mostrar los numero sobre el tablero
             columna += 1 
         fila += 1
+        
 #funciones  
 ventana2()        
 dibujo_tablero()
 numeros_sobre_tablero_funcion()   
+
 #Bandera      
 bandera=True
 #funciones de mouse y teclado sobre el tablero
