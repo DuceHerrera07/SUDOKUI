@@ -130,7 +130,25 @@ while bandera:
             if event.key==pygame.K_DELETE:
                 posicion.clear()
                 key=None
-    
+    #editado por wilson Armando
+    #cada fila debe contener los digitos de 1 al 9 sin repeticdión 
+    def chequeo_filas(self,chequear_lista="todo el tablero");
+     if chequear_lista =="todo el tablero":
+         chequear_lista == self.tablero
+     for fila in self.tablero
+        for elemento in fila:
+            if elemento != "0":
+                assert fila.count(elemento) ==1, " tablero no valido"
+                
+                
+    def chequeo_columnas (self):
+        for columna_index in range(0.9):
+            for row_index in range(0.9):
+                self.lista_invertida.append(self.tablero[row_index][columna_index])
+ 
+ 
+        self.chequeo_filas([self.lista_invertida])  
+        self.lista_invertida.clear() 
     
 
                                          
@@ -138,6 +156,8 @@ while bandera:
         reloj.tick(60)
         pygame.display.update()#activa todo lo que este sobre pantalla sin ello no se ejecuta
         pygame.display.flip()#actualiza la superficie de visualizacion completa
+        chequeo_filas() # estoy llamando a la funcion de rrepetición de filas 
+        chequeo_columnas() #llamando a la funcion de repeticion de  columnas 
 
 #IDLE_cerrar ventana    
 pygame.quit()
