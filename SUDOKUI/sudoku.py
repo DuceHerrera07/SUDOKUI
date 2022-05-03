@@ -2,6 +2,7 @@
 import tkinter
 import pygame#libreria para hacer juegos en dos dimensiones
 import tkinter as tk #blioteca grafica (GUI)
+import tkinter.font as tkFont#libreria del texto y abrevacion del llamdo de la funcion
 
 from tkinter import*#para gregar la funcion de texto
 #Inicio de pygame
@@ -42,11 +43,12 @@ def ventana2():
         ven.iconbitmap(r"instruccion.ico")#icono
         ven.configure(bg="white")#color de fondo
         #imagen-formato de imagen
-        imagen=tkinter.PhotoImage(file="tkinter_imagen_N.gif")
-        sobre_ventana=tkinter.Label(ven,image=imagen).place(x=0,y=0)
+        imagen=tkinter.PhotoImage(file="tkinter_imagen_N.gif")#variable que guarda la imagen
+        sobre_ventana=tkinter.Label(ven,image=imagen).place(x=0,y=0)#activa la imagen y posiciona en cordenadas especificas
         ven.configure(bg="white")#color de fondo
-        texto=Label(ven,text="Un rompecabezas en Sudoku comienza con una cuadricula en el cual algunos de los números",bg="white")
-        texto1=Label(ven,text="Al hacer clic en un boton del tablero",bg="white")
+        estilo_fuente=tkFont.Font(family="Cascadia Mono SemiLight",size=15)
+        texto=Label(ven,text="Un rompecabezas en Sudoku comienza con una cuadricula en el cual",font=estilo_fuente,bg="white")#60 caracteres para que ajuste bien sobre pantalla
+        texto1=Label(ven,text="algunos de los números",font=estilo_fuente,bg="white")
         texto2=Label(ven,text="podra decidir las cordenas de sus",bg="white")
         texto3=Label(ven,text="barcos, cuando estos esten asignados",bg="white")
         
