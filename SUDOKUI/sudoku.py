@@ -46,17 +46,30 @@ def ventana2():
         imagen=tkinter.PhotoImage(file="tkinter_imagen_N.gif")#variable que guarda la imagen
         sobre_ventana=tkinter.Label(ven,image=imagen).place(x=0,y=0)#activa la imagen y posiciona en cordenadas especificas
         ven.configure(bg="white")#color de fondo
-        estilo_fuente=tkFont.Font(family="Cascadia Mono SemiLight",size=15)
-        texto=Label(ven,text="Un rompecabezas en Sudoku comienza con una cuadricula en el cual",font=estilo_fuente,bg="white")#60 caracteres para que ajuste bien sobre pantalla
-        texto1=Label(ven,text="algunos de los números",font=estilo_fuente,bg="white")
-        texto2=Label(ven,text="podra decidir las cordenas de sus",bg="white")
-        texto3=Label(ven,text="barcos, cuando estos esten asignados",bg="white")
-        
+        estilo_fuente=tkFont.Font(family="Cascadia Mono SemiLight",size=20)
+        texto=Label(ven,text="Un rompecabezas en Sudoku comienza con una",font=estilo_fuente,bg="white")#60 caracteres para que ajuste bien sobre pantalla
+        texto1=Label(ven,text="cuadricula en el cual algunos de los números ya,",font=estilo_fuente,bg="white")
+        texto2=Label(ven,text="están en su lugar en dependencia de la dificultad del juego. Se completa",font=estilo_fuente,bg="white")
+        texto3=Label(ven,text="un rompecabezas cuando cada número del 1 al 9 ",font=estilo_fuente,bg="white")
+        texto4=Label(ven,text="aparecen solamente una vez en cada una de las 9",font=estilo_fuente,bg="white")
+        texto5=Label(ven,text="filas,",font=estilo_fuente,bg="white",foreground="yellow")
+        texto6=Label(ven,text="columnas",font=estilo_fuente,bg="white",foreground="red")
+        texto7=Label(ven,text="y",font=estilo_fuente,bg="white")
+        texto8=Label(ven,text="celdas.",font=estilo_fuente,bg="white",foreground="green")
+        texto9=Label(ven,text="Analice la cuadrícula para encontar los números",font=estilo_fuente,bg="white")
+        texto10=Label(ven,text="que pudiera encajar en cada celda del tablero.",font=estilo_fuente,bg="white")
         #para que se muestren en pantalla las variables anteriores que son str, columna y fila en la que apareceran
-        texto.place(x=500,y=5)
-        #texto1.grid(column=11,row=3)
-        #texto2.grid(column=11,row=4)
-        #texto3.grid(column=11,row=5)
+        texto.place(x=500,y=5)#x= lo corre hacia la derecha e izquierda
+        texto1.place(x=500,y=40)#y= lo corre hacia abajo y arriba
+        texto2.place(x=500,y=80)#+40 en y=
+        texto3.place(x=500,y=120)
+        texto4.place(x=500,y=160)
+        texto5.place(x=500,y=200)#yellow
+        texto6.place(x=600,y=200)#red
+        texto7.place(x=740,y=200)#y
+        texto8.place(x=770,y=200)#green
+        texto9.place(x=500,y=280)
+        texto10.place(x=500,y=320)
         #salir=tk.Button(ven,text="Entendido")
         ven.mainloop()
    
