@@ -1,6 +1,7 @@
 #Importar libreria
 import pygame#libreria para hacer juegos en dos dimensiones
 import tkinter as tk #blioteca grafica (GUI)
+
 from tkinter import*#para gregar la funcion de texto
 #Inicio de pygame
 pygame.init()
@@ -27,11 +28,11 @@ icono=pygame.image.load ("sudoku_Icono.jpg")
 pygame.display.set_icon(icono)
 #titulo de la ventana
 pygame.display.set_caption("Sudoku")
-
 #tipo de fuente para texto
 fuente_texto=pygame.font.SysFont(None,70)
 #actualizar pantalla
 reloj=pygame.time.Clock()
+
 def ventana2():
         ven = tk.Tk()
         #ancho y largo (orden de geometry)
@@ -39,6 +40,8 @@ def ventana2():
         ven.title('Reglas de sodoku clásico')#titulo
         ven.iconbitmap(r"instruccion.ico")#icono
         ven.configure(bg="black")#color de fondo
+        imagen=PhotoImage(file="tkinter_imagen.gif")
+        imagen_sobre_ventana=Label(ven,image=imagen).pack()
         inst=Label(ven,text="Instrucción",bg="white")
         inf=Label(ven,text="Al hacer clic en un boton del tablero",bg="white")
         inf1=Label(ven,text="podra decidir las cordenas de sus",bg="white")
@@ -52,9 +55,9 @@ def ventana2():
         inf2.grid(column=11,row=5)
         inf3.grid(column=11,row=6)
         m.grid(column=11,row=7)
-        salir=tk.Button(ven,text="Entendido")
+        #salir=tk.Button(ven,text="Entendido")
         ven.mainloop()
-    
+   
 #condiciones y funciones
 def dibujo_tablero(): 
     color_bordes=pygame.Color("black")
