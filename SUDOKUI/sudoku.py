@@ -1,4 +1,5 @@
 #Importar libreria
+import tkinter
 import pygame#libreria para hacer juegos en dos dimensiones
 import tkinter as tk #blioteca grafica (GUI)
 
@@ -36,25 +37,24 @@ reloj=pygame.time.Clock()
 def ventana2():
         ven = tk.Tk()
         #ancho y largo (orden de geometry)
-        ven.geometry('1500x910')#dimension de ventana
+        ven.geometry('1300x820')#dimension de ventana
         ven.title('Reglas de sodoku clásico')#titulo
         ven.iconbitmap(r"instruccion.ico")#icono
-        ven.configure(bg="black")#color de fondo
-        imagen=PhotoImage(file="tkinter_imagen.gif")
-        imagen_sobre_ventana=Label(ven,image=imagen).pack()
-        inst=Label(ven,text="Instrucción",bg="white")
-        inf=Label(ven,text="Al hacer clic en un boton del tablero",bg="white")
-        inf1=Label(ven,text="podra decidir las cordenas de sus",bg="white")
-        inf2=Label(ven,text="barcos, cuando estos esten asignados",bg="white")
-        inf3=Label(ven,text="correctamente se mostraran de color marron.",bg="white")
-        m=Label(ven,text="Cierre esta ventana para continuar",bg="white")
+        ven.configure(bg="white")#color de fondo
+        #imagen-formato de imagen
+        imagen=tkinter.PhotoImage(file="tkinter_imagen_N.gif")
+        sobre_ventana=tkinter.Label(ven,image=imagen).place(x=0,y=0)
+        ven.configure(bg="white")#color de fondo
+        texto=Label(ven,text="Un rompecabezas en Sudoku comienza con una cuadricula en el cual algunos de los números",bg="white")
+        texto1=Label(ven,text="Al hacer clic en un boton del tablero",bg="white")
+        texto2=Label(ven,text="podra decidir las cordenas de sus",bg="white")
+        texto3=Label(ven,text="barcos, cuando estos esten asignados",bg="white")
+        
         #para que se muestren en pantalla las variables anteriores que son str, columna y fila en la que apareceran
-        inst.grid(column=11,row=2)
-        inf.grid(column=11,row=3)
-        inf1.grid(column=11,row=4)
-        inf2.grid(column=11,row=5)
-        inf3.grid(column=11,row=6)
-        m.grid(column=11,row=7)
+        texto.place(x=500,y=5)
+        #texto1.grid(column=11,row=3)
+        #texto2.grid(column=11,row=4)
+        #texto3.grid(column=11,row=5)
         #salir=tk.Button(ven,text="Entendido")
         ven.mainloop()
    
