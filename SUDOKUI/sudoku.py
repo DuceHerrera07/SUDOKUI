@@ -38,7 +38,7 @@ def ventana2():
         #ancho y largo (orden de geometry)
         ven.geometry('1300x720')#dimension de ventana
         ven.title('Reglas de sodoku clásico')#titulo
-        ven.iconbitmap(r"instruccion.ico")#icono
+        ven.iconbitmap(r"instrucion.ico")#icono
         ven.configure(bg="white")#color de fondo
         #imagen-formato de imagen
         imagen=tkinter.PhotoImage(file="tkinter_imagen_N.gif")#variable que guarda la imagen
