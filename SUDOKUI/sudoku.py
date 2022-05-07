@@ -32,7 +32,7 @@ solucion_tablero=[
     ]
 
 #ventana donde estaran los tableros aliado y enemigo
-pantalla = pygame.display.set_mode((900,810))#ancho y altura
+pantalla = pygame.display.set_mode((1300,810))#ancho y altura
 #fondo de ventana
 pantalla.fill("white")
 #icono de ventana pygame
@@ -89,6 +89,8 @@ def ventana2():
         
 #condiciones y funciones para la ventana del juego
 def dibujo_tablero(): 
+    instruccion=pygame.image.load("instruccionnew.jpg")
+    pantalla.blit(instruccion,(800,100))
     color_bordes=pygame.Color("black")
     pygame.draw.rect(pantalla,color_bordes,pygame.Rect(15,15,785,785),10)#marco del tablero bordes externos
     a=1
@@ -107,6 +109,8 @@ def numeros_sobre_tablero_funcion():
         columna=0
         while columna < 9:
             salida=numeros_del_tablero[fila][columna]
+            solucion= salida == solucion_tablero
+                
             #formato del texto de los numeros
             texto_numeros=fuente_texto.render(str(salida),True,pygame.Color("black"))#formato del texto
             pantalla.blit(texto_numeros,pygame.Vector2((columna*88) + Compensar,(fila * 88) + Compensar))#para mostrar los numero sobre el tablero
