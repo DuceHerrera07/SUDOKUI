@@ -4,19 +4,31 @@ import pygame#libreria para hacer juegos en dos dimensiones
 import tkinter as tk #blioteca grafica (GUI)
 import tkinter.font as tkFont#libreria del texto y abrevacion del llamdo de la funcion
 from tkinter import*#para gregar la funcion de texto
+
 #Inicio de pygame
 pygame.init()
 
 numeros_del_tablero=[
-        [5,3,0,0,7,0,0,0,0],#1
-        [6,0,3,1,9,5,0,0,0],#2
-        [0,9,8,0,0,0,0,6,0],#3
-        [8,0,0,0,6,0,0,0,0],#4
-        [4,0,0,8,0,3,0,0,1],#5
-        [7,0,0,0,2,0,0,0,6],#6
-        [0,6,0,0,0,0,2,8,0],#7
-        [0,0,0,4,1,9,0,0,5],#8
-        [0,0,0,0,8,0,0,7,9]#9
+        [5,3,"","",7,"","","",""],#1
+        [6,"",2,1,9,5,"","",""],#2
+        ["",9,8,"","","","",6,""],#3
+        [8,"","","",6,"","","",3],#4
+        [4,"","",8,"",3,"","",1],#5
+        [7,"","","",2,"","","",6],#6
+        ["",6,"","","","",2,8,""],#7
+        ["","","",4,1,9,"","",5],#8
+        ["","","","",8,"","",7,9]#9
+    ]
+solucion_tablero=[
+        [5,3,4,6,7,8,9,1,2],#1
+        [6,7,2,1,9,5,3,4,8],#2
+        [1,9,8,3,4,2,5,6,7],#3
+        [8,5,9,7,6,1,4,2,3],#4
+        [4,2,6,8,5,3,7,9,1],#5
+        [7,1,3,9,2,4,8,5,6],#6
+        [9,6,1,5,3,7,2,8,4],#7
+        [2,8,7,4,1,9,6,3,5],#8
+        [3,4,5,2,8,6,1,7,9]#9
     ]
 
 #ventana donde estaran los tableros aliado y enemigo
@@ -86,7 +98,7 @@ def dibujo_tablero():
         pygame.draw.line(pantalla,color_bordes,pygame.Vector2((a*88)+ 15,15),pygame.Vector2((a*88)+15,800),ancho_de_linea) #Lineas Verticales
         pygame.draw.line(pantalla,color_bordes,pygame.Vector2(15,(a*88)+ 15),pygame.Vector2(795,(a*88)+15),ancho_de_linea) #Lineas Horizontales
         a+=1
-
+        
 #Dibujar numeros sobre el tablero
 def numeros_sobre_tablero_funcion():
     fila=0
@@ -98,6 +110,7 @@ def numeros_sobre_tablero_funcion():
             #formato del texto de los numeros
             texto_numeros=fuente_texto.render(str(salida),True,pygame.Color("black"))#formato del texto
             pantalla.blit(texto_numeros,pygame.Vector2((columna*88) + Compensar,(fila * 88) + Compensar))#para mostrar los numero sobre el tablero
+            
             columna += 1 
         fila += 1
         
