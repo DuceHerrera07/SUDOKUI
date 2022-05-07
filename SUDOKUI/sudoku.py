@@ -102,9 +102,9 @@ def numeros_sobre_tablero_funcion():
         fila += 1
         
 #funciones  
-ventana2()        
-dibujo_tablero()
-numeros_sobre_tablero_funcion()   
+ventana2()#tkinter        
+dibujo_tablero()#dibujo de lineas 
+numeros_sobre_tablero_funcion() 
 
 #Bandera      
 bandera=True
