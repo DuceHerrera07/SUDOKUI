@@ -135,37 +135,7 @@ while bandera:
         if event.type==pygame.MOUSEBUTTONDOWN:
             #si el usuario presiona el mouse se obtiene posicion
             posicion=pygame.mouse.get_pos()
-            print("X,Y",posicion,"Coordenadas de la reticula")    
-        #acceso al teclado para teclas en especifico del 1 al 9
-        if event.type==pygame.KEYDOWN:
-            if event.key==pygame.K_1:
-                key=1
-                print("Soy la  tecla 1")
-            if event.key==pygame.K_2:
-                key=2
-                print("Soy la tecla 2")
-            if event.key==pygame.K_3:
-                key=3
-                print("Soy la tecla 3")
-            if event.key==pygame.K_4:
-                key=4
-                print("Soy la tecla 4")
-            if event.key==pygame.K_5:
-                key=5
-                print("Soy la tecla 5")
-            if event.key==pygame.K_6:
-                key=6
-                print("Soy la tecla 6")
-            if event.key==pygame.K_7:
-                key=7
-                print("Soy la tecla 7")
-            if event.key==pygame.K_8:
-                key=8
-                print("Soy la tecla 8")
-            if event.key==pygame.K_9:
-                key=9
-                print("Soy la tecla 9")
-                                                
+            print("X,Y",posicion,"Coordenadas de la reticula")           
         #rapidez de actualizacion de pantalla
         reloj.tick(60)
         pygame.display.update()#activa todo lo que este sobre pantalla sin ello no se ejecuta
