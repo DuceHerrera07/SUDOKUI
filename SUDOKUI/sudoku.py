@@ -1,6 +1,6 @@
 #Importar libreria
-import tkinter
 import pygame#libreria para hacer juegos en dos dimensiones
+import tkinter
 import tkinter as tk #blioteca grafica (GUI)
 import tkinter.font as tkFont#libreria del texto y abrevacion del llamdo de la funcion
 from tkinter import*#para gregar la funcion de texto
@@ -31,7 +31,7 @@ solucion_tablero=[
         [3,4,5,2,8,6,1,7,9]#9
     ]
 
-#ventana donde estaran los tableros aliado y enemigo
+#ventana
 pantalla = pygame.display.set_mode((1500,810))#ancho y altura
 #fondo de ventana
 pantalla.fill("white")
@@ -42,10 +42,15 @@ pygame.display.set_icon(icono)
 pygame.display.set_caption("Sudoku")
 #tipo de fuente para texto
 fuente_texto=pygame.font.SysFont(None,70)
+#ancho y alto
+ancho=15
+alto=15
+
 #actualizar pantalla
 reloj=pygame.time.Clock()
-
+#libreria tkinter
 def ventana2():
+        #iniciando/activando pantalla
         ven = tk.Tk()
         #ancho y largo (orden de geometry)
         ven.geometry('1300x720')#dimension de ventana
@@ -55,7 +60,6 @@ def ventana2():
         #imagen-formato de imagen
         imagen=tkinter.PhotoImage(file="tkinter_imagen_N.gif")#variable que guarda la imagen
         sobre_ventana=tkinter.Label(ven,image=imagen).place(x=0,y=0)#activa la imagen y posiciona en cordenadas especificas
-        ven.configure(bg="white")#color de fondo
         #funcion para agregar estilo de fuente y tamaño
         estilo_fuente=tkFont.Font(family="Cascadia Mono SemiLight",size=20)
         fuente=tkFont.Font(family="Berlin Sans FB Demi",size=15)#para el botón
@@ -84,9 +88,9 @@ def ventana2():
         texto9.place(x=500,y=280)
         texto10.place(x=500,y=320)
         #crear boton que cierre la ventana de tkinter
-        salir=tk.Button(text="¡Entendido!",command=ven.destroy,height=3,width=15,font=fuente,bg="white").place(x=750,y=400)
+        tk.Button(text="¡Entendido!",command=ven.destroy,height=3,width=15,font=fuente,bg="blue").place(x=750,y=400)
         ven.mainloop()
-        
+grid=[ ]        
 #condiciones y funciones para la ventana del juego
 def dibujo_tablero(): 
     #imagen sobre pantalla pygame
@@ -98,24 +102,24 @@ def dibujo_tablero():
     a=1
     #crea las lineas que forman el tablero
     while(a*165) < 1468:
-        ancho_de_linea= 5 if a % 3 > 0 else 10#para hacer nueve divisones en el tablero
-        pygame.draw.line(pantalla,color_bordes,pygame.Vector2((a*88)+ 15,15),pygame.Vector2((a*88)+15,800),ancho_de_linea) #Lineas Verticales
-        pygame.draw.line(pantalla,color_bordes,pygame.Vector2(15,(a*88)+ 15),pygame.Vector2(795,(a*88)+15),ancho_de_linea) #Lineas Horizontales
+        ancho_de_linea= 5 if a % 3 > 0 else 9#para hacer nueve divisones en el tablero
+        pygame.draw.line(pantalla,color_bordes,pygame.Vector2((a*88)+ ancho,alto),pygame.Vector2((a*88)+ancho,800),ancho_de_linea) #Lineas Verticales
+        pygame.draw.line(pantalla,color_bordes,pygame.Vector2(ancho,(a*88)+ alto),pygame.Vector2(795,(a*88)+alto),ancho_de_linea) #Lineas Horizontales
         a+=1
      
 #Dibujar numeros sobre el tablero
 def numeros_sobre_tablero_funcion():
     fila=0
-    Compensar=40#nos ayudara para alinear numeros dentro del tablero
+    Compensar=45#nos ayudara para alinear numeros dentro del tablero
     while fila < 9:
         columna=0
         while columna < 9:
             salida=numeros_del_tablero[fila][columna]  
+            
             #formato del texto de los numeros
             texto_numeros=fuente_texto.render(str(salida),True,pygame.Color("black"))#formato del texto
             pantalla.blit(texto_numeros,pygame.Vector2((columna*88) + Compensar,(fila * 88) + Compensar))#para mostrar los numero sobre el tablero
-            
-            columna += 1 
+            columna += 1
         fila += 1
         
 #funciones  
@@ -125,9 +129,8 @@ numeros_sobre_tablero_funcion()
 
 #Bandera      
 bandera=True
-#funciones de mouse y teclado sobre el tablero
-while bandera:
-    
+#funciones de mouse y teclado
+while bandera: 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             bandera=False
@@ -135,7 +138,38 @@ while bandera:
         if event.type==pygame.MOUSEBUTTONDOWN:
             #si el usuario presiona el mouse se obtiene posicion
             posicion=pygame.mouse.get_pos()
-            print("X,Y",posicion,"Coordenadas de la reticula")           
+            columna = posicion[0] // (ancho + 15)
+            fila = posicion[1] // (alto + 15)
+            
+                    #acceso al teclado para teclas en especifico del 1 al 9
+        if event.type==pygame.KEYDOWN:
+            if event.key==pygame.K_1:
+                tecla=1
+                print("Soy la  tecla 1")
+            if event.key==pygame.K_2:
+                tecla=2
+                print("Soy la tecla 2")
+            if event.key==pygame.K_3:
+                tecla=3
+                print("Soy la tecla 3")
+            if event.key==pygame.K_4:
+                tecla=4
+                print("Soy la tecla 4")
+            if event.key==pygame.K_5:
+                tecla=5
+                print("Soy la tecla 5")
+            if event.key==pygame.K_6:
+                tecla=6
+                print("Soy la tecla 6")
+            if event.key==pygame.K_7:
+                tecla=7
+                print("Soy la tecla 7")
+            if event.key==pygame.K_8:
+                tecla=8
+                print("Soy la tecla 8")
+            if event.key==pygame.K_9:
+                tecla=9
+                print("Soy la tecla 9")          
         #rapidez de actualizacion de pantalla
         reloj.tick(60)
         pygame.display.update()#activa todo lo que este sobre pantalla sin ello no se ejecuta
